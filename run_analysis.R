@@ -15,17 +15,12 @@ reducedTrainData <- trainData[,grep('mean|std', colnames(trainData), value = T, 
 # Numerical activity identifiers
 testActivities <- read.table('UCI HAR Dataset/test/y_test.txt', col.names = c('activityIndex'), colClasses = c('factor'))
 trainActivities <- read.table('UCI HAR Dataset/train/y_train.txt', col.names = c('activityIndex'), colClasses = c('factor'))
-# Add factor column for activities to reducedTestData
-## reducedTestData$activityLabels <- as.factor(testActivities$activityIndex)
-## reducedTrainData$activityLabels <- as.factor(trainActivities$activityIndex)
 
 # The actual activity labels
 activitiesLabels <- read.table('UCI HAR Dataset/activity_labels.txt', col.names = c('index', 'label'))
 # Set labels for reducedTestData$activityLabels
 levels(testActivities$activityIndex) <- activitiesLabels$label
 levels(trainActivities$activityIndex) <- activitiesLabels$label
-## levels(reducedTestData$activityLabels) <- activitiesLabels$label
-## levels(reducedTrainData$activityLabels) <- activitiesLabels$label
 
 # Add subjects
 testSubjects <- read.table('UCI HAR Dataset/test/subject_test.txt')
