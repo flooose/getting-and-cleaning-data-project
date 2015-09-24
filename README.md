@@ -1,26 +1,19 @@
-### Summary of files
+## Working with this project
 
-- subject\_test.txt/subject\_train.txt - A single column table with subject ids
-  column. There are 30 subjects all together. A random 30% were in the
-  "test" group and the remaining 70% were in the "training" group.
+### Prerequisites
 
-- y_test/y_train.txt - A single column table with label ids. These are the
-  label ids corresponding to those in `activity_labels.txt`
+the R-script used in this projects assumes that you have downloaded
+[getdata-projectfiles-UCI HAR Dataset.zip](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
+and saved it to the root directory of this repository. After that, the
+script will unzip and process the data without further assistance.
 
-### Collecting data
+### Running the script
 
-- read X_test.txt
+In the R-console, `setwd` to the root directory of this
+repository. Then:
 
-- set columnNames from features.txt
+    source('run_analysis.R')
 
-- throw out non-std and non-mean columns
-
-- combine with y_test.txt
-
-- replace numbers in y_test column with names from `activity_labels.txt`
-
-- repeat for `train` data.
-
-- combine datasets
-
-- create final tidy data set
+After the script has run, there will be a new file named `tidy.txt` in
+the root folder of this repository, if the file already exists, it
+will be overwritten.

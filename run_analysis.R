@@ -1,6 +1,9 @@
 library(reshape2)
 library(dplyr)
 
+# Extract data
+unzip('getdata-projectfiles-UCI HAR Dataset.zip')
+
 # First we process the "test" data
 
 # Column names for data
