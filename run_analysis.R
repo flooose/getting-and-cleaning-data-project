@@ -39,6 +39,10 @@ trainSubjects <- read.table('UCI HAR Dataset/train/subject_train.txt')
 
 aggTrainData <- aggregate(reducedTrainData, by = list(subjects = trainSubjects$V1, activityType = trainActivities$activityIndex), mean, na.action=na.pass, na.rm=T)
 
-# Finally we combine testData and trainData
+# Then we combine testData and trainData
 combinedData <- rbind(aggTestData, aggTrainData)
+
+# Clean up the column names
+columnames(combinedData) <- gsub('\\.+', '.', colnames(combinedData))
+
 write.table(combinedData, file = 'tidy.txt', row.names = F)
