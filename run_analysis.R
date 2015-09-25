@@ -28,7 +28,7 @@ levels(testActivities$activityIndex) <- activitiesLabels$label
 testSubjects <- read.table('UCI HAR Dataset/test/subject_test.txt')
 
 # Aggregate columns by subjects and activity
-aggTestData <- aggregate(reducedTestData, by = list(subjects = testSubjects$V1, labels <- testActivities$activityIndex), mean, na.action=na.pass, na.rm=T)
+aggTestData <- aggregate(reducedTestData, by = list(subjects = testSubjects$V1, activityType = testActivities$activityIndex), mean, na.action=na.pass, na.rm=T)
 
 # Now the same thing for the train data
 trainData <- read.table('UCI HAR Dataset/train/X_train.txt', col.names = features[,2])
@@ -37,7 +37,7 @@ trainActivities <- read.table('UCI HAR Dataset/train/y_train.txt', col.names = c
 levels(trainActivities$activityIndex) <- activitiesLabels$label
 trainSubjects <- read.table('UCI HAR Dataset/train/subject_train.txt')
 
-aggTrainData <- aggregate(reducedTrainData, by = list(subjects = trainSubjects$V1, labels <- trainActivities$activityIndex), mean, na.action=na.pass, na.rm=T)
+aggTrainData <- aggregate(reducedTrainData, by = list(subjects = trainSubjects$V1, activityType = trainActivities$activityIndex), mean, na.action=na.pass, na.rm=T)
 
 # Finally we combine testData and trainData
 combinedData <- rbind(aggTestData, aggTrainData)
