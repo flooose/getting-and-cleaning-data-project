@@ -43,6 +43,6 @@ aggTrainData <- aggregate(reducedTrainData, by = list(subjects = trainSubjects$V
 combinedData <- rbind(aggTestData, aggTrainData)
 
 # Clean up the column names
-columnames(combinedData) <- gsub('\\.+', '.', colnames(combinedData))
+colnames(combinedData) <- gsub('\\.+', '.', colnames(combinedData))
 
 write.table(combinedData, file = 'tidy.txt', row.names = F)
